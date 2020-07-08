@@ -66,4 +66,23 @@ public class ChewAPI {
         } catch (UnsupportedEncodingException ignored) { }
         return null;
     }
+
+
+    /**
+     * Generates a random string of letters
+     * @param length the length of the string
+     * @return a random string
+     */
+    public String generateRandomString(int length) {
+        return api.getAsJSON("random?length=" + length).getString("response");
+    }
+
+    /**
+     * Generates a random string of length 20
+     * @return a random string
+     * @see ChewAPI#generateRandomString()
+     */
+    public String generateRandomString() {
+        return generateRandomString(20);
+    }
 }
