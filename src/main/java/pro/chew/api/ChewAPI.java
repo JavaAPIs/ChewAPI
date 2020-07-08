@@ -2,6 +2,7 @@ package pro.chew.api;
 
 import okhttp3.Request;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +39,17 @@ public class ChewAPI {
         for(Object phrase : trbmb)
             phrases.add((String) phrase);
         return phrases;
+    }
+
+    /**
+     * Generates a phrase for a given acronym
+     * @return the acronym
+     * @throws IllegalArgumentException if anything other than letters are given
+     */
+    public String generateAcronym(String acronym) {
+        if(acronym.matches("[a-zA-Z]+"))
+            return api.getAsJSON("acronym/" + acronym).getString("phrase");
+        else
+            throw new IllegalArgumentException("Acronym can only be letters!");
     }
 }
