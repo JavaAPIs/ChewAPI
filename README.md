@@ -48,3 +48,7 @@ public class MyChewAPIProgram {
 ```
 
 You can view the Javadocs [here](https://jenkins.chew.pw/job/chewapi-java/javadoc/overview-summary.html).
+
+## Disclaimer
+
+This project uses some code from [memerator-sdk-java](https://github.com/Memerator/memerator-sdk-java) with permission.
