@@ -13,10 +13,14 @@ import java.io.IOException;
 
 public class API {
     private static OkHttpClient client;
-    public static final String baseUrl = "https://api.chew.pro/";
+    private final String baseUrl = "https://api.chew.pro/";
 
     public API() {
         client = new OkHttpClient();
+    }
+
+    public String getBaseUrl() {
+        return baseUrl;
     }
 
     public String get(String path) {
