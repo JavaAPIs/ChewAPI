@@ -1,10 +1,8 @@
 import org.junit.Test;
-import org.junit.function.ThrowingRunnable;
 import pro.chew.api.ChewAPI;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 
 
 public class AcronymTest {

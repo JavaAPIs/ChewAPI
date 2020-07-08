@@ -2,8 +2,9 @@ package pro.chew.api;
 
 import okhttp3.Request;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,5 +52,18 @@ public class ChewAPI {
             return api.getAsJSON("acronym/" + acronym).getString("phrase");
         else
             throw new IllegalArgumentException("Acronym can only be letters!");
+    }
+
+    /**
+     * Converts the input into ChewSpeak TM
+     * @param input your input
+     * @return the translated response
+     */
+    public String convertToChewSpeak(String input) {
+        try {
+            String encoded = URLEncoder.encode(input, "UTF-8");
+            return api.getAsJSON("chewspeak?input=" + encoded).getString("output");
+        } catch (UnsupportedEncodingException ignored) { }
+        return null;
     }
 }
