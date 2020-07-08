@@ -2,6 +2,7 @@ package pro.chew.api;
 
 import okhttp3.Request;
 import org.json.JSONArray;
+import pro.chew.api.objects.SpigotDrama;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -84,5 +85,13 @@ public class ChewAPI {
      */
     public String generateRandomString() {
         return generateRandomString(20);
+    }
+
+    /**
+     * Generate some juicy spigot drama
+     * @return a SpigotDrama object
+     */
+    public SpigotDrama generateSpigotDrama() {
+        return new SpigotDrama(api.getAsJSON("spigotdrama"));
     }
 }
