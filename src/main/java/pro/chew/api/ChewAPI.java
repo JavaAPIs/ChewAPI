@@ -45,6 +45,7 @@ public class ChewAPI {
 
     /**
      * Generates a phrase for a given acronym
+     * @param acronym The acronym to fill
      * @return the acronym
      * @throws IllegalArgumentException if anything other than letters are given
      */
