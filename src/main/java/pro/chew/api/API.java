@@ -3,6 +3,8 @@ package pro.chew.api;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import pro.chew.api.errors.InternalServerError;
 import pro.chew.api.errors.NotFound;
 import pro.chew.api.errors.RateLimited;
@@ -43,5 +45,13 @@ public class API {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public JSONArray getAsJSONArray(String path) {
+        return new JSONArray(get(path));
+    }
+
+    public JSONObject getAsJSON(String path) {
+        return new JSONObject(get(path));
     }
 }
