@@ -17,7 +17,7 @@ public class ChewAPI {
     }
 
     /**
-     * Gets a trbmb phrase. a singlular phrase!
+     * Gets a trbmb phrase. a singular phrase!
      * @return a trbmb phrase
      */
     public String getTRBMBPhrase() {

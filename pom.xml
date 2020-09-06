@@ -24,17 +24,11 @@
             <artifactId>okhttp</artifactId>
             <version>4.7.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.squareup.moshi/moshi -->
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi</artifactId>
-            <version>1.9.2</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20190722</version>
+            <version>20200518</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
