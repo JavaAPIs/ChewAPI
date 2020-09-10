@@ -7,8 +7,8 @@ public class ChewSpeakTest {
     @Test
     public void chewSpeakTest() {
         ChewAPI api = new ChewAPI();
-        String response = api.convertToChewSpeak("abc");
+        String response = api.convertToChewSpeak("acb");
         assertNotNull(response);
-        assertEquals("abac", response);
+        assertEquals("acab", response);
     }
 }

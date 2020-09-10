@@ -1,13 +1,15 @@
 package pro.chew.api;
 
-import okhttp3.Request;
 import org.json.JSONArray;
 import pro.chew.api.objects.SpigotDrama;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChewAPI {
     private static API api;
@@ -17,26 +19,23 @@ public class ChewAPI {
     }
 
     /**
-     * Gets a trbmb phrase. a singular phrase!
-     * @return a trbmb phrase
+     * Gets a TRBMB phrase. a singular phrase!
+     * @return a single TRBMB phrase
      */
     public String getTRBMBPhrase() {
         return api.getAsJSONArray("trbmb").getString(0);
     }
 
     /**
-     * Get multiple trbmb phrases. Up to 1000.
+     * Get multiple TRBMB phrases. Up to 1000.
      * @param amount an amount between 1 and 1000.
-     * @return an array of phrases
+     * @return an array of TRBMB phrases
      */
     public List<String> getTRBMBPhrases(int amount) {
-        Request request = new Request.Builder()
-                .url(api.getBaseUrl() + "trbmb")
-                .addHeader("amount", String.valueOf(amount))
-                .get()
-                .build();
+        Map<String, String> headers = new HashMap<>();
+        headers.put("amount", String.valueOf(amount));
 
-        List<Object> trbmb = new JSONArray(api.performRequest(request)).toList();
+        List<Object> trbmb = new JSONArray(api.get("trbmb", headers, null)).toList();
         List<String> phrases = new ArrayList<>();
         for(Object phrase : trbmb)
             phrases.add((String) phrase);
@@ -62,13 +61,11 @@ public class ChewAPI {
      * @return the translated response
      */
     public String convertToChewSpeak(String input) {
-        try {
-            String encoded = URLEncoder.encode(input, "UTF-8");
-            return api.getAsJSON("chewspeak?input=" + encoded).getString("output");
-        } catch (UnsupportedEncodingException ignored) { }
-        return null;
-    }
+        Map<String, String> params = new HashMap<>();
+        params.put("input", input);
 
+        return api.getAsJSON("chewspeak", null, params).getString("output");
+    }
 
     /**
      * Generates a random string of letters
